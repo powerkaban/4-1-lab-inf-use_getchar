@@ -5,54 +5,37 @@
 int main()
 {
 
-        string MAX_STR;
+        char MAX_STR;
         setlocale(LC_ALL, "rus");
         FILE* file, * file2;
-        char c, sy, filename[80];
-        fopen_s(&file, "hello.txt", "r");
+        char c, filename[999];
         int i = 0;
-        printf("Symbol:");
-        scanf_s("%c", &sy);
+        int second = 0;
+        fopen_s(&file, "myfile.txt", "r");
+        printf("Ищем сколько двоеточий в файле ");
         while ((c = fgetc(file)) != EOF) {
-            if (c == sy) {
-                i++;
+            
+
+            if (c == ':') {
+                while (((c = fgetc(file)) != EOF )&&( c != ':')){
+
+                    filename[i] = c;
+                    i++;
+                };
+            
             }
+            
+
+
         }
 
-        printf("%d", i);
+        printf("разделение на две части");
         fclose(file);
-        fopen_s(&file2, "hello2.txt", "w");
-        if (file2 != 0)
-            fprintf(file2, "коллиество букв в файле %d", i);
-        if (file2 == NULL)
-        {
-            printf("Error!");
+        fopen_s(&file2, "input.txt", "w");
+        for (int j = 0; j < i;j++) {
+            fputs(filename, file2);
         }
-        else
-        {
-            while (!feof(file2))
-            {
-                MAX_STR = fgetc(file2);
-                puts(str);
-            }
-        }
-        fclose(file2);
-    }
-}
-/*
 
-char str[] = "abc:def:ghi";
-    char* firstColon = strchr(str, ':');
-    if (firstColon != NULL) {
-        char* secondColon = strchr(firstColon + 1, ':');
-        if (secondColon != NULL) {
-            int length = secondColon - firstColon - 1;
-            char result[length + 1];
-            strncpy(result, firstColon + 1, length);
-            result[length] = '\0';
-            printf("%s\n", result);
-        }
-        else {
-            printf("%s\n", firstColon + 1);
-        }
-    }*/
+        fclose(file2);
+    
+}
