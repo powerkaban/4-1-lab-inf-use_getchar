@@ -2,17 +2,48 @@
 #include <iostream>
 #include <stdio.h>
 
+// второе задание такое же только со считыванием файла 
+int main() {
+    setlocale(LC_ALL, "rus");
+    FILE* file,* file2;
+    fopen_s(&file, "myfile.txt", "r");
+    char  b;
+    fopen_s(&file2, "input.txt", "w");
+    b = getchar();
+    while (b != EOF)
+    {
+        if (b == ':')
+        {
+            while ((b != ':') || (b != EOF)) {
+
+                b = getchar();
+                fputs(file2);
+                if (b == ':')
+                    return 0;
+                printf("%c", b);
+            }
+            return 0;
+        }
+        b = getchar();
+    }
+    fclose(file);
+
+    fclose(file2);
+
+}
+//первое задание с двоеточием 
+/*
 int main()
  {
     int c ;
     int a = 0;
-    c = getchar();          
-    while (c != EOF)       
+    c = getchar();
+    while (c != EOF)
     {
-        if (c ==':')           
+        if (c ==':')
         {
             while ((c != ':')|| (c != EOF)) {
-                
+
                 c = getchar();
                 if (c == ':')
                     return 0;
@@ -23,16 +54,7 @@ int main()
         c = getchar();
     }
  }
-int main2() {
-    setlocale(LC_ALL, "rus");
-    FILE* file,* file2;
-    fopen_s(&file, "myfile.txt", "r");
-    int b;
-    b = getchar();
-    while()
-}
-
-
+*/
 
 /*
 int main()
